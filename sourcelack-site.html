@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SourceLack — Source all lack</title>
+<meta name="description" content="The resource network that connects what you have with what you need. Abundance, not extraction.">
+<link rel="icon" href="favicon-sourcelack.svg" type="image/svg+xml">
+<meta name="theme-color" content="#07201c">
+<link rel="canonical" href="https://sourcelack.com">
+<meta property="og:title" content="SourceLack — Source all lack">
+<meta property="og:description" content="The resource network that connects what you have with what you need.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sourcelack.com">
+<meta property="og:image" content="https://sourcelack.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --sys:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --bg:#07201c;--panel:#0b2b25;--line:rgba(45,212,191,.18);
+    --paper:#e8fbf4;--muted:#9fd0c4;--faint:#6f9c90;
+    --teal:#2dd4bf;--coral:#ff7a66;--amber:#ffb26b;--grad:linear-gradient(100deg,#2dd4bf,#5fce9a 50%,#ff7a66);--maxw:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+  body{font-family:var(--sys);background:var(--bg);color:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .grad-txt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(7,32,28,.72);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.01em}
+  .brand .ic{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(150deg,#2dd4bf,#3fb69a 50%,#ff7a66)}
+  .brand .ic svg{width:66%;height:66%}
+  .navlinks{display:none;gap:28px;align-items:center;font-size:14px;color:var(--muted)}@media(min-width:820px){.navlinks{display:flex}}
+  .navlinks a:hover{color:var(--paper)}
+  .btn{display:inline-block;font-weight:600;font-size:14px;padding:.6rem 1.15rem;border-radius:100px;transition:.18s;cursor:pointer;border:1px solid transparent}
+  .btn-primary{color:#06201c;background:linear-gradient(100deg,#2dd4bf,#ffb26b);box-shadow:0 8px 26px rgba(45,212,191,.4);font-weight:700}
+  .btn-primary:hover{filter:brightness(1.05);transform:translateY(-1px)}
+  .btn-ghost{color:var(--paper);border-color:rgba(45,212,191,.4)}.btn-ghost:hover{background:rgba(45,212,191,.12)}
+  .nav-cta{display:none}@media(min-width:720px){.nav-cta{display:inline-block}}
+  .btn-lg{padding:.85rem 1.5rem;font-size:15px}
+  .hero{position:relative;overflow:hidden;padding:clamp(72px,12vh,150px) 0 clamp(60px,9vh,120px);
+    background:radial-gradient(72% 55% at 26% -6%,rgba(255,122,102,.22),transparent 60%),radial-gradient(80% 60% at 82% 108%,rgba(45,212,191,.2),transparent 60%),radial-gradient(120% 120% at 50% 42%,#0c322b,#07201c 82%)}
+  #rain{position:absolute;inset:0;z-index:0;pointer-events:none}.hero .wrap{position:relative;z-index:1}
+  .eyebrow{display:inline-block;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:700;color:#bff0e5;padding:.5rem 1rem;border:1px solid var(--line);border-radius:100px;background:rgba(45,212,191,.06);margin-bottom:26px}
+  h1{font-size:clamp(44px,8vw,92px);line-height:1.0;letter-spacing:-.025em;font-weight:800;max-width:14ch}
+  .hero p.lead{margin-top:22px;font-size:clamp(16px,2.1vw,21px);color:var(--muted);max-width:54ch}
+  .cta-row{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+  section{padding:clamp(62px,10vh,104px) 0}
+  .sec-eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:var(--teal);margin-bottom:14px}
+  h2{font-size:clamp(28px,4.6vw,46px);line-height:1.08;letter-spacing:-.02em;font-weight:800;max-width:20ch}
+  .sec-intro{margin-top:16px;color:var(--muted);font-size:clamp(15px,1.8vw,18px);max-width:58ch}
+  .steps{margin-top:50px;display:grid;gap:22px;grid-template-columns:1fr;counter-reset:s}@media(min-width:820px){.steps{grid-template-columns:repeat(3,1fr)}}
+  .step{position:relative;padding-top:30px;border-top:2px solid rgba(45,212,191,.4)}
+  .step::before{counter-increment:s;content:"0" counter(s);position:absolute;top:-2px;left:0;transform:translateY(-130%);font-size:13px;font-weight:800;letter-spacing:.1em;color:var(--teal)}
+  .step h3{font-size:20px;font-weight:700;margin-bottom:8px}.step p{color:var(--muted);font-size:15px}
+  .verts{background:linear-gradient(180deg,#07201c,#0a2b25)}
+  .vgrid{margin-top:44px;display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}@media(min-width:700px){.vgrid{grid-template-columns:repeat(3,1fr)}}@media(min-width:960px){.vgrid{grid-template-columns:repeat(6,1fr)}}
+  .vert{padding:22px 16px;border:1px solid var(--line);border-radius:16px;background:rgba(11,43,37,.5);text-align:center;transition:.2s}
+  .vert:hover{border-color:rgba(45,212,191,.5);transform:translateY(-3px)}
+  .vert .e{font-size:26px}.vert h4{margin-top:10px;font-size:14px;font-weight:700}
+  .why{display:grid;gap:36px;grid-template-columns:1fr;align-items:center}@media(min-width:820px){.why{grid-template-columns:1.1fr 1fr}}
+  .why .quote{font-size:clamp(22px,3.2vw,32px);line-height:1.3;font-weight:700;letter-spacing:-.01em}
+  .why .quote span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .cta-band{text-align:center;background:radial-gradient(60% 100% at 50% 0%,rgba(45,212,191,.18),transparent 70%),linear-gradient(180deg,#0a2b25,#07201c)}
+  .cta-band h2{margin:0 auto;max-width:18ch}.cta-band p{margin:16px auto 0;color:var(--muted);max-width:46ch;font-size:17px}.cta-band .cta-row{margin-top:30px;justify-content:center}
+  footer{border-top:1px solid var(--line);padding:52px 0 40px;background:#051a16}
+  .foot-brand{max-width:36ch}.foot-brand p{color:var(--faint);font-size:13.5px;margin-top:12px}
+  .foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--faint);font-size:13px}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}.reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+    .lead-form{max-width:520px;margin:30px auto 0;display:flex;flex-direction:column;gap:12px;text-align:left}
+  .lf-row{display:flex;gap:12px;flex-wrap:wrap}.lf-row input{flex:1;min-width:180px}
+  .lead-form input,.lead-form textarea{width:100%;font-family:var(--sys);font-size:15px;color:var(--paper);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;resize:vertical}
+  .lead-form input:focus,.lead-form textarea:focus{outline:none;border-color:var(--teal)}
+  .lead-form input::placeholder,.lead-form textarea::placeholder{color:var(--faint)}
+  .lead-form button{margin-top:4px;border:none;cursor:pointer}
+  .lf-or{margin-top:14px;color:var(--faint);font-size:14px}.lf-or a{color:var(--muted);text-decoration:underline}
+  :focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body id="top">
+<header><nav class="wrap">
+  <a class="brand" href="#top"><span class="ic"><svg viewBox="0 0 100 100" fill="none"><g stroke="#fff" stroke-width="4" stroke-linecap="round"><line x1="50" y1="50" x2="80" y2="50"/><line x1="50" y1="50" x2="59.3" y2="21.5"/><line x1="50" y1="50" x2="25.7" y2="32.4"/><line x1="50" y1="50" x2="25.7" y2="67.6"/><line x1="50" y1="50" x2="59.3" y2="78.5"/></g><g fill="#fff"><circle cx="50" cy="50" r="8"/><circle cx="80" cy="50" r="5"/><circle cx="59.3" cy="21.5" r="5"/><circle cx="25.7" cy="32.4" r="5"/><circle cx="25.7" cy="67.6" r="5"/><circle cx="59.3" cy="78.5" r="5"/></g></svg></span>SourceLack</a>
+  <div class="navlinks"><a href="#how">How it works</a><a href="sourcelack-organizations.html">For organizations</a><a href="sourcelack-about.html">About</a><a href="#contact">Contact</a></div>
+  <a class="btn btn-primary nav-cta" href="#contact">Get early access</a>
+</nav></header>
+<main>
+  <section class="hero"><canvas id="rain"></canvas><div class="wrap">
+    <span class="eyebrow">The resource network</span>
+    <h1>Source <span class="grad-txt">all lack.</span></h1>
+    <p class="lead">Everything you have that sits idle. Everything you need that's just out of reach. SourceLack connects the two — a community network where abundance flows to fill the gaps.</p>
+    <div class="cta-row"><a class="btn btn-primary btn-lg" href="#contact">Get early access</a><a class="btn btn-ghost btn-lg" href="#how">How it works</a></div>
+  </div></section>
+
+  <section id="how"><div class="wrap">
+    <div class="sec-eyebrow">How it works</div>
+    <h2>Give what you can. Get what you need.</h2>
+    <p class="sec-intro">The matching happens for you, powered by the Infinity Engine orchestration core.</p>
+    <div class="steps">
+      <div class="step reveal"><h3>Share what you have</h3><p>List the things sitting idle — a spare room, an unused tool, an hour of your skill, a surplus of food.</p></div>
+      <div class="step reveal"><h3>Say what you need</h3><p>Tell the network what's just out of reach. No haggling, no listings to scroll — just what you're looking for.</p></div>
+      <div class="step reveal"><h3>Get matched</h3><p>The engine connects the have with the need automatically, and routes it to the right neighbor.</p></div>
+    </div>
+  </div></section>
+
+  <section id="share" class="verts"><div class="wrap">
+    <div class="sec-eyebrow">What you can share</div>
+    <h2>If it can be shared, it belongs here.</h2>
+    <div class="vgrid">
+      <div class="vert reveal"><div class="e">🍎</div><h4>Food</h4></div>
+      <div class="vert reveal"><div class="e">🏠</div><h4>Housing</h4></div>
+      <div class="vert reveal"><div class="e">🚗</div><h4>Rides</h4></div>
+      <div class="vert reveal"><div class="e">🎓</div><h4>Skills</h4></div>
+      <div class="vert reveal"><div class="e">🔧</div><h4>Tools</h4></div>
+      <div class="vert reveal"><div class="e">⏳</div><h4>Time</h4></div>
+    </div>
+  </div></section>
+
+  <section><div class="wrap why">
+    <div class="quote">Not a marketplace that takes a cut. A network built on <span>abundance, not extraction.</span></div>
+    <p class="sec-intro" style="margin:0">SourceLack is free for individuals. It exists to move resources to where they're needed — mutual aid with the efficiency of good technology, and none of the tolls.</p>
+  </div></section>
+
+  <section id="contact" class="cta-band"><div class="wrap">
+    <h2>Help build a network of enough.</h2>
+    <p>Join the early community, or bring SourceLack to your neighborhood or organization.</p>
+    <form class="lead-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST"><div class="lf-row"><input type="text" name="name" placeholder="Your name" required><input type="email" name="email" placeholder="Email" required></div><textarea name="message" rows="3" placeholder="What would you share or need?"></textarea><button class="btn btn-primary btn-lg" type="submit">Get early access</button></form><p class="lf-or">or email <a href="mailto:ash@infinityengine.ai">ash@infinityengine.ai</a></p>
+  </div></section>
+</main>
+<footer><div class="wrap">
+  <div class="foot-brand"><a class="brand" href="#top"><span class="ic"><svg viewBox="0 0 100 100" fill="none"><g stroke="#fff" stroke-width="4" stroke-linecap="round"><line x1="50" y1="50" x2="80" y2="50"/><line x1="50" y1="50" x2="59.3" y2="21.5"/><line x1="50" y1="50" x2="25.7" y2="32.4"/><line x1="50" y1="50" x2="25.7" y2="67.6"/><line x1="50" y1="50" x2="59.3" y2="78.5"/></g><g fill="#fff"><circle cx="50" cy="50" r="8"/><circle cx="80" cy="50" r="5"/><circle cx="59.3" cy="21.5" r="5"/><circle cx="25.7" cy="32.4" r="5"/><circle cx="25.7" cy="67.6" r="5"/><circle cx="59.3" cy="78.5" r="5"/></g></svg></span>SourceLack</a>
+    <p>Source all lack. A resource network built on abundance.</p></div>
+  <div class="foot-bottom"><span>© 2026 Infinity Engine LLC · Powered by Infinity Engine</span><span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · ash@infinityengine.ai</span></div>
+</div></footer>
+<script>
+(() => {const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const c=document.getElementById('rain');if(c&&!reduced){const x=c.getContext('2d');let W,H,DPR;const EMO=['🍎','🏠','🔧','⏳','⚡','🎓','💧','🚗','🍞'];let ps=[];
+    function size(){DPR=Math.min(window.devicePixelRatio||1,2);const r=c.parentElement.getBoundingClientRect();W=r.width;H=r.height;c.width=W*DPR;c.height=H*DPR;c.style.width=W+'px';c.style.height=H+'px';x.setTransform(DPR,0,0,DPR,0,0);
+      const N=Math.min(24,Math.floor(W/70));ps=[];for(let i=0;i<N;i++)ps.push({x:Math.random()*W,y:Math.random()*H,vy:0.3+Math.random()*0.4,s:18+Math.random()*14,e:EMO[(Math.random()*EMO.length)|0],ph:Math.random()*6.28,a:0.5+Math.random()*0.4});}
+    size();addEventListener('resize',size);
+    function frame(){x.clearRect(0,0,W,H);for(const p of ps){p.y+=p.vy;p.ph+=0.02;if(p.y-30>H){p.y=-30;p.x=Math.random()*W;}x.save();x.globalAlpha=p.a;x.translate(p.x+Math.sin(p.ph)*10,p.y);x.font=p.s+'px serif';x.textAlign='center';x.textBaseline='middle';x.fillText(p.e,0,0);x.restore();}requestAnimationFrame(frame);}frame();}
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));})();
+</script>
+</body>
+</html>
