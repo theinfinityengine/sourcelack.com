@@ -1,166 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SourceLack — A concept</title>
-<meta name="description" content="Source all lack. A resource network built on abundance.">
-<meta name="theme-color" content="#07201c">
-<meta property="og:title" content="SourceLack — A concept">
-<meta property="og:description" content="Source all lack. A resource network built on abundance.">
-<meta property="og:type" content="website">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SourceLack: Source all lack.</title>
+<meta name="description" content="A network where what sits idle finds what's just out of reach. Food, tools, time, services, trade, money, a ride, a hand. Abundance, by design.">
+<meta name="theme-color" content="#0e211c">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SourceLack">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
-  :root{
-    --sys:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-    --bg:#07201c;--panel:#0b2b25;--line:rgba(45,212,191,.18);
-    --paper:#e8fbf4;--muted:#9fd0c4;--faint:#6f9c90;
-    --teal:#2dd4bf;--coral:#ff7a66;--amber:#ffb26b;
-    --grad:linear-gradient(100deg,#2dd4bf,#5fce9a 50%,#ff7a66);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:var(--sys);background:var(--bg);color:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased;overflow:hidden}
-  a{color:inherit;text-decoration:none}
-  .grad-txt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-
-  .stage{
-    position:relative;min-height:100vh;min-height:100dvh;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;padding:40px 24px;overflow:hidden;
-    background:
-      radial-gradient(72% 55% at 26% -6%,rgba(255,122,102,.22),transparent 60%),
-      radial-gradient(80% 60% at 82% 108%,rgba(45,212,191,.2),transparent 60%),
-      radial-gradient(120% 120% at 50% 42%,#0c322b,#07201c 82%);
-  }
-  #rain{position:absolute;inset:0;z-index:0;pointer-events:none}
-  .vignette{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:radial-gradient(58% 48% at 50% 46%,rgba(7,32,28,.82),rgba(7,32,28,.35) 62%,transparent 78%)}
-  .inner{position:relative;z-index:2;max-width:760px}
-
-  .brand{display:inline-flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.01em;font-size:19px;margin-bottom:34px}
-  .brand .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
-    background:linear-gradient(150deg,#2dd4bf,#3fb69a 50%,#ff7a66);
-    box-shadow:0 8px 30px rgba(45,212,191,.28)}
-  .brand .ic svg{width:66%;height:66%}
-
-  .eyebrow{display:inline-block;font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:700;
-    color:#bff0e5;padding:.5rem 1.05rem;border:1px solid var(--line);border-radius:100px;
-    background:rgba(45,212,191,.06);margin-bottom:26px}
-  .eyebrow .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--teal);
-    margin-right:9px;vertical-align:middle;animation:blip 2.4s ease-in-out infinite}
-  @keyframes blip{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(45,212,191,.5)}50%{opacity:.55;box-shadow:0 0 0 7px rgba(45,212,191,0)}}
-
-  h1{font-size:clamp(46px,10vw,104px);line-height:.98;letter-spacing:-.03em;font-weight:800}
-  p.lead{margin:24px auto 0;font-size:clamp(16px,2.1vw,21px);color:var(--muted);max-width:50ch}
-
-  .chips{margin-top:38px;display:flex;flex-wrap:wrap;gap:9px;justify-content:center}
-  .chip{font-size:13px;font-weight:600;color:var(--muted);padding:.5rem .95rem;border-radius:100px;
-    border:1px solid var(--line);background:rgba(11,43,37,.5);backdrop-filter:blur(6px)}
-  .chip .e{margin-right:7px}
-
-  .foot{position:absolute;bottom:26px;left:0;right:0;z-index:2;
-    color:var(--faint);font-size:12.5px;padding:0 24px}
-
-  .reveal{opacity:0;transform:translateY(16px);animation:rise .8s cubic-bezier(.2,.7,.3,1) forwards}
-  @keyframes rise{to{opacity:1;transform:none}}
-  .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.32s}.d4{animation-delay:.46s}.d5{animation-delay:.6s}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;animation:none}.eyebrow .dot{animation:none}}
+:root{
+  --bg:#0e211c; --bg2:#12302a; --ink:#eafff7; --soft:#a9cfc3; --mute:#6f958a;
+  --teal:#3fd0b0; --coral:#e8806a; --line:rgba(120,220,190,.22); --card:rgba(255,255,255,.04);
+  --font:"Inter","SF Pro Display",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{min-height:100vh;background:radial-gradient(120% 60% at 50% 0%,#3a3a30 0%,rgba(58,58,48,0) 55%),linear-gradient(180deg,#10261f 0%,var(--bg) 45%,#123a31 100%);
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);overflow-x:hidden}
+button,select,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+#float{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+#float span{position:absolute;opacity:.55;filter:saturate(.8) blur(.3px);animation:drift linear infinite}
+@keyframes drift{0%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(var(--dx),-40px,0) rotate(var(--r))}100%{transform:translate3d(0,0,0) rotate(0)}}
+main{position:relative;z-index:1}
+.hero{max-width:980px;margin:0 auto;padding:12vh 20px 40px;text-align:center}
+.brand{display:flex;flex-direction:column;align-items:center;gap:14px;font-weight:700;font-size:1.5rem;letter-spacing:-.01em;margin:0 auto}
+.logo{width:72px;height:72px;border-radius:20px;box-shadow:0 0 40px rgba(63,208,176,.35)}
+.pill{display:flex;width:max-content;align-items:center;justify-content:center;gap:12px;margin:30px auto 28px;padding:12px 18px 12px 30px;border:1px solid var(--line);border-radius:999px;background:rgba(0,0,0,.18);font-weight:700;letter-spacing:.35em;font-size:.8rem;color:var(--soft)}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal)}
+h1{font-size:clamp(3rem,13vw,9rem);line-height:.95;font-weight:900;letter-spacing:-.055em}
+h1 .g{background:linear-gradient(90deg,var(--teal) 0%,#7fd4a6 50%,var(--coral) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 .dot{color:var(--coral)}
+.sub{max-width:760px;margin:34px auto 0;font-size:clamp(1.05rem,2.4vw,1.55rem);line-height:1.55;font-weight:300;color:var(--soft)}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:44px 0 0}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.16);cursor:pointer;font-weight:600;font-size:1.05rem;color:var(--soft);transition:background .2s,border-color .2s,color .2s}
+.chip:hover{border-color:var(--teal)}
+.chip[aria-pressed=true]{background:rgba(63,208,176,.16);border-color:var(--teal);color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:34px}
+.btn{padding:14px 28px;border-radius:999px;border:1px solid var(--line);background:transparent;font-weight:700;cursor:pointer}
+.btn.p{background:linear-gradient(90deg,var(--teal),#8ad7a2 55%,var(--coral));color:#08201a;border:0}
+.btn[hidden]{display:none}
+.board{max-width:880px;margin:0 auto;padding:30px 20px 20px}
+.board h2{font-size:1.5rem;letter-spacing:-.02em;margin-bottom:6px}
+.board .meta{color:var(--mute);margin-bottom:20px;font-size:.95rem}
+.list{display:grid;gap:12px}
+.post{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:16px 18px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.post .e{font-size:1.8rem}
+.post h3{font-size:1.05rem;font-weight:650}
+.post p{color:var(--soft);font-size:.93rem;margin-top:3px}
+.tag{font-size:.78rem;font-weight:700;padding:5px 12px;border-radius:999px;white-space:nowrap}
+.tag.offer{background:rgba(63,208,176,.16);color:var(--teal)}
+.tag.need{background:rgba(232,128,106,.16);color:var(--coral)}
+.post .side{display:grid;gap:8px;justify-items:end}
+.link{background:none;border:0;color:var(--soft);cursor:pointer;font-size:.88rem;text-decoration:underline;text-underline-offset:3px;padding:2px}
+.empty{padding:28px;text-align:center;color:var(--soft);border:1px dashed var(--line);border-radius:18px}
+dialog{width:min(520px,calc(100vw - 32px));margin:auto;padding:26px;border:1px solid var(--line);border-radius:24px;background:#10281f;color:var(--ink)}
+dialog::backdrop{background:rgba(3,12,9,.7);backdrop-filter:blur(4px)}
+dialog h2{font-size:1.4rem;margin-bottom:16px;letter-spacing:-.02em}
+label{display:block;font-size:.88rem;color:var(--soft);margin:14px 0 6px}
+input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.25)}
+select option{background:#10281f}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg button{padding:12px;border-radius:12px;border:1px solid var(--line);background:transparent;cursor:pointer;font-weight:700;color:var(--soft)}
+.seg button[aria-pressed=true]{border-color:var(--teal);background:rgba(63,208,176,.16);color:var(--ink)}
+.row{display:flex;gap:10px;justify-content:flex-end;margin-top:22px}
+.match{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.match:first-of-type{border-top:0}
+.hint{font-size:.85rem;color:var(--mute);margin-top:12px}
+main{padding-bottom:60px}
+#status{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:5;padding:10px 18px;border-radius:999px;background:#0b1a15;border:1px solid var(--line);font-size:.9rem;opacity:0;transition:opacity .25s;pointer-events:none}
+#status.on{opacity:1}
+@media(max-width:560px){.post{grid-template-columns:auto 1fr}.post .side{grid-column:1/-1;grid-auto-flow:column;justify-content:space-between;justify-items:start}.pill{letter-spacing:.25em}}
+@media(prefers-reduced-motion:reduce){#float span{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div class="stage">
-  <canvas id="rain"></canvas>
-  <div class="vignette"></div>
+<div id="float" aria-hidden="true"></div>
 
-  <div class="inner">
-    <div class="brand reveal d1">
-      <span class="ic"><svg viewBox="0 0 100 100" fill="none"><g stroke="#fff" stroke-width="4" stroke-linecap="round"><line x1="50" y1="50" x2="80" y2="50"/><line x1="50" y1="50" x2="59.3" y2="21.5"/><line x1="50" y1="50" x2="25.7" y2="32.4"/><line x1="50" y1="50" x2="25.7" y2="67.6"/><line x1="50" y1="50" x2="59.3" y2="78.5"/></g><g fill="#fff"><circle cx="50" cy="50" r="8"/><circle cx="80" cy="50" r="5"/><circle cx="59.3" cy="21.5" r="5"/><circle cx="25.7" cy="32.4" r="5"/><circle cx="25.7" cy="67.6" r="5"/><circle cx="59.3" cy="78.5" r="5"/></g></svg></span>
-      SourceLack
+<main>
+  <section class="hero">
+    <div class="brand">
+      <img class="logo" src="icons/icon-192.png" alt="" width="72" height="72">
+      <span>SourceLack</span>
     </div>
-
-    <div class="reveal d2"><span class="eyebrow"><span class="dot"></span>A concept</span></div>
-
-    <h1 class="reveal d3">Source <span class="grad-txt">all lack.</span></h1>
-
-    <p class="lead reveal d4">A network where what sits idle finds what's just out of reach. Food, tools, time, a ride, a hand. Abundance, by design.</p>
-
-    <div class="chips reveal d5">
-      <span class="chip"><span class="e">🍎</span>Food</span>
-      <span class="chip"><span class="e">🏠</span>Housing</span>
-      <span class="chip"><span class="e">🚗</span>Rides</span>
-      <span class="chip"><span class="e">🎓</span>Skills</span>
-      <span class="chip"><span class="e">🔧</span>Tools</span>
-      <span class="chip"><span class="e">⏳</span>Time</span>
+    <div class="pill"><i></i>A CONCEPT</div>
+    <h1>Source <span class="g">all lack</span><span class="dot">.</span></h1>
+    <p class="sub">A network where what sits idle finds what's just out of reach. Food, tools, time, a ride, a hand. Abundance, by design.</p>
+    <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+    <div class="actions">
+      <button class="btn p" id="offerBtn">Offer something</button>
+      <button class="btn" id="needBtn">Ask for something</button>
+      <button class="btn" id="installBtn" hidden>Install app</button>
     </div>
+  </section>
+
+  <section class="board" aria-labelledby="bt">
+    <h2 id="bt">The board</h2>
+    <p class="meta" id="meta"></p>
+    <div class="list" id="list"></div>
+    <p class="hint">This is a concept. Posts are saved only on this device, and the board works offline. SourceLack does not move money: Money posts are for lending, sharing costs, and mutual aid that people settle themselves.</p>
+  </section>
+</main>
+
+<div id="status" role="status" aria-live="polite"></div>
+
+<dialog id="postDlg">
+  <h2 id="dlgTitle">Offer something</h2>
+  <div class="seg" id="typeSeg">
+    <button type="button" data-t="offer" aria-pressed="true">I can offer</button>
+    <button type="button" data-t="need" aria-pressed="false">I need</button>
   </div>
-  <div class="foot">Infinity Engine LLC</div>
+  <label for="cat">Category</label>
+  <select id="cat"></select>
+  <label for="title">What is it?</label>
+  <input id="title" maxlength="60" placeholder="e.g. Cordless drill, free this weekend">
+  <label for="note">Details (optional)</label>
+  <textarea id="note" rows="3" maxlength="200" placeholder="When, where, anything helpful"></textarea>
+  <div class="row">
+    <button class="btn" type="button" id="cancel">Cancel</button>
+    <button class="btn p" type="button" id="save">Post to the board</button>
+  </div>
+</dialog>
 
-</div>
+<dialog id="matchDlg">
+  <h2 id="mTitle">Matches</h2>
+  <div id="mList"></div>
+  <div class="row"><button class="btn" type="button" id="mClose">Close</button></div>
+</dialog>
 
 <script>
-(() => {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const c = document.getElementById('rain');
-  if (!c || reduced) return;
-  const x = c.getContext('2d');
-  let W, H, DPR, ps = [];
+const CATS=[["food","🍎","Food"],["housing","🏠","Housing"],["rides","🚗","Rides"],["skills","🎓","Skills"],["tools","🔧","Tools"],["time","⏳","Time"],["services","🧹","Services"],["trade","🔄","Trade"],["money","💰","Money"],["care","🤲","Care"],["space","🗝️","Space"]];
+const E=Object.fromEntries(CATS.map(c=>[c[0],c[1]])), N=Object.fromEntries(CATS.map(c=>[c[0],c[2]]));
+const KEY="sourcelack.posts.v1";
+const SEED=[
+ {id:1,type:"offer",cat:"food",title:"Garden tomatoes, more than I can eat",note:"Pick up Saturday morning."},
+ {id:2,type:"need",cat:"rides",title:"Ride to a 7am appointment on Tuesday",note:"Can cover gas."},
+ {id:3,type:"offer",cat:"tools",title:"Circular saw and sawhorses",note:"Free to borrow for a weekend."},
+ {id:4,type:"offer",cat:"skills",title:"Help with resumes and cover letters",note:"One hour, evenings."},
+ {id:5,type:"need",cat:"time",title:"A hand moving a couch",note:"Two people, about 30 minutes."},
+ {id:6,type:"offer",cat:"housing",title:"Spare room for a week",note:"For someone between places."},
+ {id:7,type:"need",cat:"tools",title:"Ladder for a day",note:"Will return it cleaned."},
+ {id:8,type:"offer",cat:"services",title:"Bike repair and tune-ups",note:"Bring it by on weekends."},
+ {id:9,type:"need",cat:"services",title:"Someone to fix a leaking faucet",note:"Happy to trade baking or pay."},
+ {id:10,type:"offer",cat:"trade",title:"Trade: kids' winter coats, sizes 4 to 6",note:"Looking for sizes 7 to 8."},
+ {id:11,type:"need",cat:"trade",title:"Trade my guitar lessons for a haircut",note:"One hour each."},
+ {id:12,type:"need",cat:"money",title:"$150 bridge loan until the 1st",note:"Will repay in full, plus a thank-you."},
+ {id:13,type:"offer",cat:"money",title:"Splitting a bulk warehouse membership",note:"Two more people to share the cost."},
+ {id:14,type:"offer",cat:"care",title:"Watching kids on Friday evenings",note:"Parent of two, experienced."},
+ {id:15,type:"need",cat:"care",title:"Check-in visits for my mother",note:"Twice a week, an hour."},
+ {id:16,type:"offer",cat:"space",title:"Garage shelf and a garden plot",note:"Free for a season."}
+];
+let posts,filter="all",type="offer";
+try{posts=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!Array.isArray(posts))posts=SEED;
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(posts))}catch(e){}};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
-  // money + resources, falling together
-  const EMO = ['💵','🪙','💰','💸','🍎','🍞','🏠','🔧','🚗','🎓','⏳','⚡','💧','📦','🧰','🥫'];
+function toast(m){const s=$("status");s.textContent=m;s.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>s.classList.remove("on"),2400)}
 
-  function size(){
-    DPR = Math.min(window.devicePixelRatio || 1, 2);
-    const r = c.parentElement.getBoundingClientRect();
-    W = r.width; H = r.height;
-    c.width = W*DPR; c.height = H*DPR;
-    c.style.width = W+'px'; c.style.height = H+'px';
-    x.setTransform(DPR,0,0,DPR,0,0);
+function renderChips(){
+  $("chips").innerHTML=[["all","✨","All"],...CATS].map(c=>`<button class="chip" data-c="${c[0]}" aria-pressed="${filter===c[0]}"><span aria-hidden="true">${c[1]}</span>${c[2]}</button>`).join("");
+}
+function render(){
+  const list=posts.filter(p=>filter==="all"||p.cat===filter);
+  $("meta").textContent=`${list.filter(p=>p.type==="offer").length} offered, ${list.filter(p=>p.type==="need").length} needed${filter==="all"?"":" in "+N[filter]}`;
+  $("list").innerHTML=list.length?list.slice().reverse().map(p=>`
+    <article class="post">
+      <div class="e" aria-hidden="true">${E[p.cat]}</div>
+      <div><h3>${esc(p.title)}</h3>${p.note?`<p>${esc(p.note)}</p>`:""}</div>
+      <div class="side"><span class="tag ${p.type}">${p.type==="offer"?"Offered":"Needed"}</span>
+      <span><button class="link" data-m="${p.id}">Find matches</button> <button class="link" data-d="${p.id}" aria-label="Remove post">Remove</button></span></div>
+    </article>`).join(""):`<div class="empty">Nothing here yet. Be the first to offer or ask.</div>`;
+}
+$("chips").onclick=e=>{const b=e.target.closest("[data-c]");if(!b)return;filter=filter===b.dataset.c?"all":b.dataset.c;renderChips();render();$("bt").scrollIntoView({behavior:"smooth"})};
+$("list").onclick=e=>{
+  const m=e.target.closest("[data-m]"),d=e.target.closest("[data-d]");
+  if(m){const p=posts.find(x=>x.id==m.dataset.m);const opp=p.type==="offer"?"need":"offer";
+    const hits=posts.filter(x=>x.cat===p.cat&&x.type===opp);
+    $("mTitle").textContent=p.type==="offer"?"People who need this":"People who can offer this";
+    $("mList").innerHTML=hits.length?hits.map(h=>`<div class="match"><span aria-hidden="true" style="font-size:1.6rem">${E[h.cat]}</span><div><strong>${esc(h.title)}</strong><div style="color:var(--soft);font-size:.9rem">${esc(h.note||"")}</div></div></div>`).join(""):`<div class="empty">No matches in ${N[p.cat]} yet. Your post is on the board for when one appears.</div>`;
+    $("matchDlg").showModal()}
+  if(d){posts=posts.filter(x=>x.id!=d.dataset.d);save();render();toast("Post removed")}
+};
+$("cat").innerHTML=CATS.map(c=>`<option value="${c[0]}">${c[1]} ${c[2]}</option>`).join("");
+function openPost(t){type=t;setType();$("title").value="";$("note").value="";if(filter!=="all")$("cat").value=filter;$("postDlg").showModal();$("title").focus()}
+function setType(){document.querySelectorAll("#typeSeg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===type));$("dlgTitle").textContent=type==="offer"?"Offer something":"Ask for something"}
+$("typeSeg").onclick=e=>{const b=e.target.closest("button");if(b){type=b.dataset.t;setType()}};
+$("offerBtn").onclick=()=>openPost("offer");$("needBtn").onclick=()=>openPost("need");
+$("cancel").onclick=()=>$("postDlg").close();$("mClose").onclick=()=>$("matchDlg").close();
+$("save").onclick=()=>{
+  const t=$("title").value.trim();
+  if(!t){toast("Add a short title first");$("title").focus();return}
+  posts.push({id:Date.now(),type,cat:$("cat").value,title:t,note:$("note").value.trim()});
+  save();filter="all";renderChips();render();$("postDlg").close();toast(type==="offer"?"Offered":"Request posted");
+};
 
-    const N = Math.min(34, Math.floor(W/44));
-    ps = [];
-    for (let i=0;i<N;i++){
-      const depth = Math.random();               // 0 = far, 1 = near
-      ps.push({
-        x: Math.random()*W,
-        y: Math.random()*H,
-        vy: 0.22 + depth*0.75,
-        s: 15 + depth*24,
-        e: EMO[(Math.random()*EMO.length)|0],
-        ph: Math.random()*6.28,
-        sw: 6 + Math.random()*14,               // sway width
-        rot: (Math.random()-0.5)*0.5,
-        vr: (Math.random()-0.5)*0.012,
-        a: 0.3 + depth*0.55
-      });
-    }
-  }
-  size();
-  addEventListener('resize', size);
+/* floating emoji */
+(function(){const wrap=$("float"),set=["🍎","🍞","🔧","🏠","🥫","📦","💧","⚡","⏳","🎓","💸","🚗","🧰","🪴","🤝","🪙","🧹","🔄"];
+  const n=innerWidth<600?10:18;
+  for(let i=0;i<n;i++){const s=document.createElement("span");s.textContent=set[i%set.length];
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;font-size:${22+Math.random()*34}px;animation-duration:${14+Math.random()*16}s;animation-delay:-${Math.random()*20}s;--dx:${(Math.random()-.5)*80}px;--r:${(Math.random()-.5)*50}deg`;
+    wrap.appendChild(s)}})();
 
-  function frame(){
-    x.clearRect(0,0,W,H);
-    for (const p of ps){
-      p.y += p.vy;
-      p.ph += 0.014;
-      p.rot += p.vr;
-      if (p.y - 40 > H){
-        p.y = -40;
-        p.x = Math.random()*W;
-        p.e = EMO[(Math.random()*EMO.length)|0];
-      }
-      x.save();
-      x.globalAlpha = p.a;
-      x.translate(p.x + Math.sin(p.ph)*p.sw, p.y);
-      x.rotate(Math.sin(p.ph*0.7)*0.18 + p.rot);
-      x.font = p.s+'px serif';
-      x.textAlign = 'center';
-      x.textBaseline = 'middle';
-      x.fillText(p.e, 0, 0);
-      x.restore();
-    }
-    requestAnimationFrame(frame);
-  }
-  frame();
-})();
+/* PWA: service worker, install, online state */
+if("serviceWorker" in navigator&&location.protocol.startsWith("http")){
+  addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+}
+let deferred;
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;$("installBtn").hidden=false});
+$("installBtn").onclick=async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;$("installBtn").hidden=true};
+addEventListener("appinstalled",()=>{$("installBtn").hidden=true;toast("SourceLack installed")});
+const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent),standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+if(isIOS&&!standalone){$("installBtn").hidden=false;$("installBtn").onclick=()=>toast("Tap Share, then Add to Home Screen")}
+addEventListener("offline",()=>toast("You're offline. The board still works."));
+addEventListener("online",()=>toast("Back online"));
+const q=new URLSearchParams(location.search).get("action");
+
+renderChips();render();
+if(q==="offer"||q==="need")openPost(q);
 </script>
 </body>
 </html>
